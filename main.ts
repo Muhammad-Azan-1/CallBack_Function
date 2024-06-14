@@ -1,7 +1,7 @@
 //1
 /// call back function
 
-/// The Function which  passed as an argument to another function is called Callback Function  or The function
+/// The Function which  passed as an argument to another function is called Callback Function  
 function func1(){
 
     console.log("Hello World!");
