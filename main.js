@@ -1,7 +1,7 @@
 "use strict";
 //1
 /// call back function
-/// The Function which  passed as an argument to another function is called Callback Function  or The function
+/// The Function which  passed as an argument to another function is called Callback Function  
 function func1() {
     console.log("Hello World!");
 }
@@ -32,7 +32,7 @@ function func5(a, b) {
 function func6(a, b, callback) {
     callback(a, b);
 }
-func6(3, 4, func5);
+func6(3, 4, func5); // as we call the block of code exceute inside the block of code we have call the call back function (func5) as pass a and b
 //4
 function greetings2() {
     console.log("How are you");
@@ -42,3 +42,36 @@ function greetings(name, callBack) {
     callBack();
 }
 greetings("Azan", greetings2);
+// Washing Machine with Call back function
+function Washing(callBack) {
+    console.log("Washing is started...");
+    setTimeout(() => {
+        console.log("Washing is done..");
+        callBack();
+    }, 5000);
+}
+function soaking(callBack2) {
+    console.log("Soaking is started....");
+    setTimeout(() => {
+        console.log("soaking is completed...");
+        callBack2();
+    }, 4000);
+}
+function dry(callBack) {
+    console.log("drying is started...");
+    setTimeout(() => {
+        setTimeout(() => {
+            console.log("drying is done!");
+            callBack();
+        });
+    }, 3000);
+}
+Washing(() => {
+    console.log("\n", "step 1 completed");
+    soaking(() => {
+        console.log("\n", "step 2 completed");
+        dry(() => {
+            console.log("\n", "step 3 completed");
+        });
+    });
+});

@@ -47,7 +47,7 @@ function func5(a:number, b:number){
    console.log(a+b);
 }
 
-function func6(a:number,b:number,callback:any){
+function func6(a:number,b:number,callback:(a:number,b:number)=>void){
 
     callback(a,b);
 }
@@ -60,9 +60,56 @@ function greetings2(){
     console.log("How are you");
 }
 
-function greetings(name:string , callBack:any){
+function greetings(name:string , callBack:()=>void){
     console.log("Hello " + name);
     callBack();
 }
 
 greetings("Azan",greetings2)
+
+
+// Washing Machine with Call back function
+
+function Washing(callBack:()=>void){
+    console.log("Washing is started...")
+    setTimeout(()=>{
+        console.log("Washing is done..")
+        callBack()
+    },5000)
+}
+
+
+function soaking(callBack2:()=>void){
+    console.log("Soaking is started....")
+    setTimeout(()=>{
+        console.log("soaking is completed...")
+        callBack2()
+    },4000)
+}
+
+
+function dry(callBack:()=>void){
+    console.log("drying is started...")
+    setTimeout(()=>{
+        setTimeout(()=>{
+            console.log("drying is done!")
+            callBack()
+        })
+    },3000)
+}
+
+
+Washing(()=>{
+    console.log("\n","step 1 completed")
+  soaking(()=>{
+    console.log("\n","step 2 completed")
+    dry(()=>{
+        console.log("\n","step 3 completed")
+    })
+  })
+  
+})
+
+
+
+
